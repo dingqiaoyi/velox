@@ -437,6 +437,9 @@ std::vector<column_index_t> calculateOutputChannels(
     const RowTypePtr& targetInputType,
     const RowTypePtr& targetOutputType);
 
+using UpdatableDataSourceSupplier =
+    std::function<std::optional<connector::UpdatableDataSourcePtr>()>;
+
 // A first operator in a Driver, e.g. table scan or exchange client.
 class SourceOperator : public Operator {
  public:
@@ -463,6 +466,10 @@ class SourceOperator : public Operator {
 
   void noMoreInput() override {
     VELOX_FAIL("SourceOperator does not support noMoreInput()");
+  }
+
+  virtual UpdatableDataSourceSupplier updatableDataSource() {
+    return [this]() { return std::nullopt; };
   }
 };
 

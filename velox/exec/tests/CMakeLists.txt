@@ -23,6 +23,7 @@ add_executable(
   CrossJoinTest.cpp
   CustomJoinTest.cpp
   DriverTest.cpp
+  DeleteTest.cpp
   EnforceSingleRowTest.cpp
   FilterProjectTest.cpp
   FunctionResolutionTest.cpp

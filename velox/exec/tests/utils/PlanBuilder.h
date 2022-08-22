@@ -256,6 +256,11 @@ class PlanBuilder {
       const std::shared_ptr<core::InsertTableHandle>& insertHandle,
       const std::string& rowCountColumnName = "rowCount");
 
+
+  PlanBuilder& tableDelete(
+      const std::string& rowIdColumnName,
+      const std::string& rowCountColumnName = "rowCount");
+
   /// Add an AggregationNode representing partial aggregation with the
   /// specified grouping keys, aggregates and optional masks.
   ///
